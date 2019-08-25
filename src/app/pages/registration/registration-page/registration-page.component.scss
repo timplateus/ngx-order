@@ -1,0 +1,22 @@
+.page {
+  display: flex;
+  height: 100%;
+  .background {
+    background: url('/assets/img/splash-1.jpg') center;
+    background-size: cover;
+  }
+  .half-width {
+    width: 50%;
+    height: 100%;
+  }
+  .page--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .input-form {
+    padding-right: 20px;
+  }
+}
+
