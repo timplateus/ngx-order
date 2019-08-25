@@ -1,13 +1,29 @@
 <mat-toolbar color="primary">
   <img src="assets/img/frog.svg" alt="logo" class="logo">
   <span class="fill-remaining-space"></span>
-  <button mat-button (click)="logout()">Logout</button>
+  <button mat-stroked-button (click)="logout()">Logout</button>
 </mat-toolbar>
 
 <div class="page--content">
   <h1>Overview</h1>
   <div class="tables-list">
-    
+    <mat-card class="table" *ngFor="let table of tables">
+      <mat-card-header>
+        <mat-card-title>{{ table.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <mat-divider></mat-divider>
+        <button class="account-btn" mat-raised-button *ngFor="let account of table.accounts">
+          {{ account.name }}
+        </button>
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <button mat-button>Nieuwe toevoegen</button>
+        </mat-card-actions>
+      </mat-card-footer>
+    </mat-card>
   </div>
 </div>
 
