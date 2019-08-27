@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RegistrationModule} from './registration/registration.module';
 import {SharedModule} from '../shared/shared.module';
 import {OverviewModule} from './overview/overview.module';
+import {OrderModule} from './order/order.module';
 
 
 
@@ -11,6 +12,7 @@ import {OverviewModule} from './overview/overview.module';
   imports: [
     CommonModule,
     OverviewModule,
+    OrderModule,
     RegistrationModule,
     SharedModule
   ]
