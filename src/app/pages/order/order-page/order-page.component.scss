@@ -1,0 +1,10 @@
+.order-page {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.order-page__content {
+  flex: 1 0 0px;
+}
+.order-page__aside {
+  flex: 0 0 30%;
+}
