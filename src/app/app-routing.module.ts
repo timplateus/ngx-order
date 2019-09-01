@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {RegistrationPageComponent} from './pages/registration/registration-page/registration-page.component';
-import {OverviewPageComponent} from './pages/overview/overview-page/overview-page.component';
+import { RouterModule, Routes } from '@angular/router';
 import {OrderPageComponent} from './pages/order/order-page/order-page.component';
+import {OverviewPageComponent} from './pages/overview/overview-page/overview-page.component';
+import {RegistrationPageComponent} from './pages/registration/registration-page/registration-page.component';
 
 
 const routes: Routes = [

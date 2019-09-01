@@ -61,11 +61,13 @@
     "no-consecutive-blank-lines": false,
     "no-console": [
       true,
-      "debug",
+      "error",
       "info",
+      "log",
       "time",
       "timeEnd",
-      "trace"
+      "trace",
+      "warn"
     ],
     "no-empty": false,
     "no-inferrable-types": [
@@ -81,7 +83,7 @@
       true,
       "as-needed"
     ],
-    "object-literal-sort-keys": true,
+    "object-literal-sort-keys": false,
     "ordered-imports": true,
     "quotemark": [
       true,
