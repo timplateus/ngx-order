@@ -351,14 +351,16 @@ export class OverviewPageComponent implements OnInit {
     this.router.navigate(['../']);
   }
 
-  openAddDialog() {
+  openAddDialog(currentTable: Table) {
     const dialogRef = this.dialog.open(AddAccountComponent, {
       width: '250px'
     });
-    dialogRef.afterClosed().subscribe((result: string) => this.addAccount(result));
+    dialogRef.afterClosed().subscribe((result: string) => this.addAccountToTable(result, currentTable));
   }
 
-  private addAccount(name): void {
+  private addAccountToTable(name, table): void {
    // TODO: post to '/account/add'
+    table.accounts = [...table.accounts, {id: 'new-account', name}];
+    this.tables.map((t) => t.id === table.id ? table : t);
   }
 }
