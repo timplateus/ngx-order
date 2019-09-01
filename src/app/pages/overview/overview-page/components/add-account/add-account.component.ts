@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'oc-add-account',
-  templateUrl: './add-account.component.html',
-  styleUrls: ['./add-account.component.scss']
+  styleUrls: ['./add-account.component.scss'],
+  templateUrl: './add-account.component.html'
 })
-export class AddAccountComponent implements OnInit {
+export class AddAccountComponent {
+  public accountName = '';
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private dialogRef: MatDialogRef<AddAccountComponent>) {
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
