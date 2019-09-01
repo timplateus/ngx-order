@@ -1,27 +1,15 @@
-.logo {
-  height: 40px;
-}
-
-.fill-remaining-space {
-  flex: 1 1 auto;
-}
-
-.page--content {
+.overview-content {
   padding: 0 10px;
 }
-
 .tables-list {
   display: flex;
   flex-wrap: wrap;
 }
-
 .table {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  //width: 15%;
 }
-
 .card-content {
   display: flex;
   flex-direction: column;
@@ -29,7 +17,6 @@
   align-items: stretch;
   flex-grow: 1;
 }
-
 .account-btn {
   margin-top: 5px;
 }

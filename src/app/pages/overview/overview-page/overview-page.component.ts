@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
 import {AddAccountComponent} from './components/add-account/add-account.component';
 
 export interface Account {
@@ -19,7 +19,7 @@ export interface Table {
   styleUrls: ['./overview-page.component.scss'],
   templateUrl: './overview-page.component.html'
 })
-export class OverviewPageComponent implements OnInit {
+export class OverviewPageComponent {
 
   public tables: Array<Table> =
     [
@@ -343,14 +343,6 @@ export class OverviewPageComponent implements OnInit {
 
   constructor(private router: Router, private dialog: MatDialog) {
   }
-
-  ngOnInit() {
-  }
-
-  logout() {
-    this.router.navigate(['../login']);
-  }
-
   openAddDialog(currentTable: Table) {
     const dialogRef = this.dialog.open(AddAccountComponent, {
       width: '250px'

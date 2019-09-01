@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import {MatButtonModule, MatCardModule, MatDividerModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import { HeaderComponent } from './components/header/header.component';
 
 const materialModules = [
   MatInputModule,
@@ -11,12 +12,13 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
     ...materialModules
   ],
   exports: [
+    HeaderComponent,
     ...materialModules
   ]
 })
