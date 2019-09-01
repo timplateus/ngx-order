@@ -13,7 +13,10 @@
       </mat-card-header>
       <mat-card-content class="card-content">
         <mat-divider></mat-divider>
-        <button class="account-btn" mat-raised-button *ngFor="let account of table.accounts">
+        <button mat-raised-button
+          *ngFor="let account of table.accounts"
+          class="account-btn"
+          (click)="goToOrder()">
           {{ account.name }}
         </button>
       </mat-card-content>

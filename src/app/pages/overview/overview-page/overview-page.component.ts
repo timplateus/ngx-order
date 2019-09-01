@@ -348,7 +348,7 @@ export class OverviewPageComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigate(['../']);
+    this.router.navigate(['../login']);
   }
 
   openAddDialog(currentTable: Table) {
@@ -356,6 +356,10 @@ export class OverviewPageComponent implements OnInit {
       width: '250px'
     });
     dialogRef.afterClosed().subscribe((result: string) => this.addAccountToTable(result, currentTable));
+  }
+
+  goToOrder() {
+    this.router.navigate(['../order']);
   }
 
   private addAccountToTable(name, table): void {
