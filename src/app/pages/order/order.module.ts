@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {MatGridListModule} from '@angular/material';
+import {MatGridListModule, MatListModule, MatTabsModule} from '@angular/material';
 import {SharedModule} from '../../shared/shared.module';
 import { OrderPageComponent } from './order-page/order-page.component';
 
@@ -11,6 +11,8 @@ import { OrderPageComponent } from './order-page/order-page.component';
   imports: [
     CommonModule,
     MatGridListModule,
+    MatListModule,
+    MatTabsModule,
     SharedModule
   ]
 })

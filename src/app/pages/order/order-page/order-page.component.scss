@@ -4,7 +4,50 @@
 }
 .order-page__content {
   flex: 1 0 0px;
+  border-right: 1px solid #dddddd;
 }
 .order-page__aside {
+  display: flex;
+  flex-direction: column;
   flex: 0 0 30%;
+}
+.order-items {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.order-item {
+  width: calc(25% - 20px);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  button {
+    width: 100%;
+    height: 100%;
+  }
+}
+.summary {
+  background-color: #fff;
+  margin: 10px 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 50px;
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    font-weight: bold;
+  }
+  &__remark {
+    margin-left: 10px;
+    font-style: italic;
+  }
+  &__amount {
+    font-weight: bolder;
+    font-size: 18px;
+  }
 }
