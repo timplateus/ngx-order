@@ -74,23 +74,16 @@
     </mat-tab-group>
   </main>
   <aside class="order-page__aside">
-    <div class="summary">
-      <div class="summary__line">
-        <span class="summary__title">Champagne (fles)</span>
-        <span class="summary_amount">1</span>
-      </div>
-      <div class="summary_line">
-        <span class="summary__remark">Vier glazen</span>
-      </div>
-    </div>
-    <div class="summary">
-      smkjfmsf
-    </div>
-    <div class="summary">
-      smkjfmsf
-    </div>
-    <div class="summary">
-      smkjfmsf
+    <div class="summary-list">
+      <oc-summary-item
+        *ngFor="let item of items"
+        class="summary"
+        [title]="item.title"
+        [amount]="item.amount"
+        [remarks]="item.remarks"
+        [editMode]="editId === item.id"
+        (click)="editId = item.id" (delete)="onDelete(item.id)">
+      </oc-summary-item>
     </div>
   </aside>
 </div>

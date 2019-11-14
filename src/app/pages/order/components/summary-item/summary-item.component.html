@@ -1,0 +1,28 @@
+<ng-container *ngIf="!editMode; else edit">
+  <div class="summary__line">
+    <span class="summary__title">{{ title }}</span>
+    <span class="summary__amount">{{ amount }}</span>
+  </div>
+  <div *ngIf="remarks" class="summary_line">
+    <span class="summary__remark">{{ remarks }}</span>
+  </div>
+</ng-container>
+
+<ng-template #edit>
+  <div class="summary__line">
+    <span class="summary__title">{{ title }}</span>
+    <img src="assets/img/trash.svg" alt="icon-delete" (click)="deleteClicked()">
+  </div>
+  <div class="summary__line">
+   <oc-number-picker [value]="amount" (changed)="onValueChange($event)"></oc-number-picker>
+  </div>
+  <div class="summary__line">
+    <mat-form-field appearance="outline" style="flex: 1">
+      <mat-label>Opmerkingen</mat-label>
+      <input matInput [(value)]="remarks">
+      <button mat-button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="remarks = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</ng-template>
