@@ -11,7 +11,7 @@
 <ng-template #edit>
   <div class="summary__line">
     <span class="summary__title">{{ title }}</span>
-    <img src="assets/img/trash.svg" alt="icon-delete" (click)="deleteClicked()">
+    <img src="assets/img/trash.svg" alt="icon-delete" (click)="deleteClicked($event)">
   </div>
   <div class="summary__line">
    <oc-number-picker [value]="amount" (changed)="onValueChange($event)"></oc-number-picker>
@@ -19,8 +19,8 @@
   <div class="summary__line">
     <mat-form-field appearance="outline" style="flex: 1">
       <mat-label>Opmerkingen</mat-label>
-      <input matInput [(value)]="remarks">
-      <button mat-button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="remarks = ''">
+      <input (click)="stopPropagate($event)" matInput [value]="remarks" (change)="remarks = $event.target.value">
+      <button mat-button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="clearRemarks($event)">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>

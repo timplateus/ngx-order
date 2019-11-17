@@ -2,88 +2,29 @@
 <div class="order-page">
   <main class="order-page__content">
     <mat-tab-group>
-      <mat-tab label="Drank">
+      <mat-tab *ngFor="let category of (categories$ | async)" [label]="category.name">
         <div class="order-items">
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Champagne (fles)</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
-          </div>
-          <div class="order-item">
-            <button mat-raised-button color="primary">Cola</button>
+          <div *ngFor="let menuItem of category.menuItems" class="order-item">
+            <button mat-raised-button color="primary" (click)="addSummaryItem(menuItem.id, menuItem.name)">{{ menuItem.name }}</button>
           </div>
         </div>
       </mat-tab>
-      <mat-tab label="Voorgerecht">
-        Hier komen de voorgerechten
-      </mat-tab>
-      <mat-tab label="Hoofdgerecht"></mat-tab>
-      <mat-tab label="Dessert"></mat-tab>
     </mat-tab-group>
   </main>
   <aside class="order-page__aside">
     <div class="summary-list">
       <oc-summary-item
-        *ngFor="let item of items"
+        *ngFor="let item of summaryItems"
         class="summary"
+        [id]="item.id"
         [title]="item.title"
         [amount]="item.amount"
         [remarks]="item.remarks"
         [editMode]="editId === item.id"
-        (click)="editId = item.id" (delete)="onDelete(item.id)">
+        (leave)="onLeave($event)"
+        (click)="toggleEditMode(item.id)" (delete)="onDelete(item.id)">
       </oc-summary-item>
     </div>
+      <button class="submit-order" mat-raised-button color="accent" (click)="submitOrder()">Plaats bestelling</button>
   </aside>
 </div>

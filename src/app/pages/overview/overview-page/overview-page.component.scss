@@ -3,9 +3,16 @@
 }
 .tables-list {
   display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+.tables-row {
+  display: flex;
   flex-wrap: wrap;
+  min-height: 165px;
 }
 .table {
+  flex-grow: 1;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -17,6 +24,12 @@
   align-items: stretch;
   flex-grow: 1;
 }
+mat-card-header {
+  margin: 0 auto;
+}
 .account-btn {
   margin-top: 5px;
+}
+.add-account-btn {
+  width: 100%;
 }

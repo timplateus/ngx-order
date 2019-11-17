@@ -1,5 +1,5 @@
 <div class="picker">
-  <img src="assets/img/chevron-left.svg" class="subtract" alt="subtract" (click)="changed.emit(value - 1)">
+  <img src="assets/img/chevron-left.svg" class="subtract" alt="subtract" (click)="changeValue($event, -1)">
   <div class="picker__value">{{ value }}</div>
-  <img src="assets/img/chevron-right.svg" class="add" alt="add" (click)="changed.emit(value + 1)">
+  <img src="assets/img/chevron-right.svg" class="add" alt="add" (click)="changeValue($event, 1)">
 </div>
