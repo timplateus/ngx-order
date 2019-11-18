@@ -1,5 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {map} from 'rxjs/operators';
 import {SummaryItem} from '../../../shared/models';
 import {StateService} from '../../../shared/services/state.service';
 
@@ -12,10 +13,12 @@ export class OrderPageComponent implements OnDestroy {
 
   public editId: number;
   public summaryItems: Array<SummaryItem> = [];
+  public accountId = this.route.snapshot.params.id;
 
-  public categories$ = this.http.categoriesWithItems$;
+  public categories$ = this.state.categoriesWithItems$;
+  public accountName$ = this.route.queryParams.pipe(map((params) => params.name));
 
-  constructor(private http: StateService, private router: Router) {}
+  constructor(private state: StateService, private router: Router, private route: ActivatedRoute) {}
 
   onDelete(id: number) {
     this.summaryItems = this.summaryItems.filter((item) => item.id !== id);
@@ -50,7 +53,7 @@ export class OrderPageComponent implements OnDestroy {
   }
 
   submitOrder() {
-    this.http.submitOrder(this.summaryItems, 40).subscribe(
+    this.state.submitOrder(this.summaryItems, this.accountId).subscribe(
       () => this.router.navigate(['/overview']),
       (error) => alert(error.message)
     );

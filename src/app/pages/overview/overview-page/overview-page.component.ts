@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Table} from '../../../shared/models';
 import {StateService} from '../../../shared/services/state.service';
@@ -13,9 +13,9 @@ import {AddAccountComponent} from './components/add-account/add-account.componen
 })
 export class OverviewPageComponent {
 
-  public tables$: Observable<Array<Array<Table>>> = this.http.tables$;
+  public tables$: Observable<Array<Array<Table>>> = this.state.tables$;
 
-  constructor(private router: Router, private dialog: MatDialog, private http: StateService) {
+  constructor(private router: Router, private dialog: MatDialog, private state: StateService) {
   }
 
   openAddDialog(currentTable: Table) {
@@ -25,15 +25,11 @@ export class OverviewPageComponent {
     dialogRef.afterClosed().subscribe((result: string) => this.addAccountToTable(result, currentTable));
   }
 
-  goToOrder(accountId: number) {
-    this.router.navigate(['../order']);
+  goToOrder(accountId: number, accountName: string) {
+    this.router.navigate(['../order', accountId], {queryParams: {name: accountName}});
   }
 
   private addAccountToTable(name: string, table: Table): void {
-   // TODO: post to '/account/add'
-    console.debug(`Add account to table:`);
-    console.debug(table);
-   //  table.accounts = [...table.accounts, {id: 'new-account', name}];
-   this.http.addAccount(table.id, name);
+    this.state.addAccount(table.id, name);
   }
 }

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import { HeaderComponent } from './components/header/header.component';
 import { NumberPickerComponent } from './components/number-picker/number-picker.component';
-import {HttpClientModule} from '@angular/common/http';
 
 const materialModules = [
   MatIconModule,

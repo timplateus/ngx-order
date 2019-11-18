@@ -7,7 +7,7 @@ import {SummaryItem} from '../../../../shared/models';
   styleUrls: ['./summary-item.component.scss']
 })
 export class SummaryItemComponent implements OnChanges {
-  @Input() id: number
+  @Input() id: number;
   @Input() title: string;
   @Input() amount: number;
   @Input() remarks: string;

@@ -9,9 +9,10 @@
           <mat-card-content class="card-content">
             <mat-divider></mat-divider>
             <button mat-raised-button
+                    color="primary"
                     *ngFor="let account of table.accounts"
                     class="account-btn"
-                    (click)="goToOrder(account.id)">
+                    (click)="goToOrder(account.id, account.name)">
               {{ account.name }}
             </button>
           </mat-card-content>

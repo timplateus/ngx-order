@@ -1,4 +1,4 @@
-<oc-header [title]="'Order'"></oc-header>
+<oc-header [title]="'Order: ' + (accountName$ | async)"></oc-header>
 <div class="order-page">
   <main class="order-page__content">
     <mat-tab-group>

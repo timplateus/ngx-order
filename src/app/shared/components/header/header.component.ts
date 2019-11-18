@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
+import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'oc-header',
@@ -9,11 +10,12 @@ import {Router} from '@angular/router';
 export class HeaderComponent {
 
   @Input() title: string;
+  public employee$ = this.state.employee$;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private state: StateService) { }
 
   logout() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => this.state.employee$.next(''));
   }
 
 }
