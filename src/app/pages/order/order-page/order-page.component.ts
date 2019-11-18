@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {SummaryItem} from '../../../shared/models';
-import {OcHttpService} from '../../../shared/services/oc-http.service';
+import {StateService} from '../../../shared/services/state.service';
 
 @Component({
   selector: 'oc-order-page',
@@ -15,7 +15,7 @@ export class OrderPageComponent implements OnDestroy {
 
   public categories$ = this.http.categoriesWithItems$;
 
-  constructor(private http: OcHttpService, private router: Router) {}
+  constructor(private http: StateService, private router: Router) {}
 
   onDelete(id: number) {
     this.summaryItems = this.summaryItems.filter((item) => item.id !== id);

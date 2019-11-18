@@ -8,7 +8,7 @@ import {Category, MenuItem, SummaryItem, Table} from '../models';
 @Injectable({
   providedIn: 'root'
 })
-export class OcHttpService implements OnDestroy {
+export class StateService implements OnDestroy {
 
   public tables$: BehaviorSubject<Array<Array<Table>>> = new BehaviorSubject([]);
   public categories$: BehaviorSubject<Array<Category>> = new BehaviorSubject([]);

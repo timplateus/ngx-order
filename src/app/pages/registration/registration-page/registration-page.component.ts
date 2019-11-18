@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import {StateService} from '../../../shared/services/state.service';
 
 @Component({
   selector: 'oc-registration-page',

@@ -28,7 +28,7 @@ export class SummaryItemComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.debug(changes);
     if (changes.editMode && changes.editMode.currentValue === false) {
-      this.leave.emit({id: this.id, amount: this.amount, remarks: this.remarks, title: this.title});
+      this.leave.emit({id: this.id, amount: this.amount, remarks: this.remarks, title: this.title, menuItemId: 0});
     }
   }
 

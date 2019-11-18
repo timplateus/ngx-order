@@ -3,7 +3,7 @@ import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Table} from '../../../shared/models';
-import {OcHttpService} from '../../../shared/services/oc-http.service';
+import {StateService} from '../../../shared/services/state.service';
 import {AddAccountComponent} from './components/add-account/add-account.component';
 
 @Component({
@@ -15,7 +15,7 @@ export class OverviewPageComponent {
 
   public tables$: Observable<Array<Array<Table>>> = this.http.tables$;
 
-  constructor(private router: Router, private dialog: MatDialog, private http: OcHttpService) {
+  constructor(private router: Router, private dialog: MatDialog, private http: StateService) {
   }
 
   openAddDialog(currentTable: Table) {
