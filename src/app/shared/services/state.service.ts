@@ -13,6 +13,7 @@ export class StateService implements OnDestroy {
   public tables$: BehaviorSubject<Array<Array<Table>>> = new BehaviorSubject([]);
   public categories$: BehaviorSubject<Array<Category>> = new BehaviorSubject([]);
   public menuItems$: BehaviorSubject<Array<MenuItem>> = new BehaviorSubject([]);
+  public employee$: BehaviorSubject<string> = new BehaviorSubject('');
 
   public categoriesWithItems$ = combineLatest(this.categories$, this.menuItems$).pipe(map(([categories, menuItems]): Array<Category> =>
     categories.map((category) => ({...category, menuItems: menuItems.filter((item) => item.categoryId === category.id)}))
@@ -50,7 +51,7 @@ export class StateService implements OnDestroy {
     const body = {
       accountId,
       orderItems: items.map((item) => ({itemId: item.menuItemId, quantity: item.amount, note: item.remarks})),
-      employee: 'Tim'
+      employee: this.employee$.value
     };
     return this.http.post(url, body);
   }

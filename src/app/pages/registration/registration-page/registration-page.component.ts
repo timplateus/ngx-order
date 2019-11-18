@@ -9,9 +9,12 @@ import {StateService} from '../../../shared/services/state.service';
 })
 export class RegistrationPageComponent {
 
-  constructor(private router: Router) { }
+  public name: string;
 
-  submitName() {
+  constructor(private state: StateService, private router: Router) { }
+
+  submitName(name: string) {
+    this.state.employee$.next(name);
     this.router.navigate(['../overview']);
   }
 }
