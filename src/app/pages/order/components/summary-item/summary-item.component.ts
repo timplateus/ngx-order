@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {SummaryItem} from '../../../../shared/models';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'oc-summary-item',
@@ -14,7 +16,20 @@ export class SummaryItemComponent implements OnChanges {
   @Input() editMode = false;
   @Output() leave: EventEmitter<SummaryItem> = new EventEmitter();
   @Output() delete: EventEmitter<void> = new EventEmitter();
-  constructor() { }
+  constructor(registry: MatIconRegistry, sanitizer: DomSanitizer) {
+    registry.addSvgIcon(
+      'trash',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/trash.svg')
+    );
+    registry.addSvgIcon(
+      'lessThan',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-left.svg')
+    );
+    registry.addSvgIcon(
+      'greaterThan',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-right.svg')
+    );
+  }
 
   onValueChange(value: number) {
     this.amount = value;

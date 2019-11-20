@@ -11,6 +11,9 @@
   justify-content: center;
   height: inherit;
   padding: 10px 0;
+  .mat-icon {
+    height: 30px;
+  }
   &__value {
     text-align: center;
     align-self: center;
