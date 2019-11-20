@@ -4,6 +4,7 @@ import {BehaviorSubject, combineLatest, Observable, of, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 import {mapToCategories, mapToMenuItems, mapToTables} from '../maps';
 import {Category, MenuItem, SummaryItem, Table} from '../models';
+import {AppConfigService} from './app-config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,10 @@ export class StateService implements OnDestroy {
     categories.map((category) => ({...category, menuItems: menuItems.filter((item) => item.categoryId === category.id)}))
   ));
 
-  private rootUrl = 'http://ec2-3-17-69-11.us-east-2.compute.amazonaws.com:8080';
-
+  private rootUrl = this.config.getRootUrl();
   private destroy$: Subject<void> = new Subject();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private config: AppConfigService) {
     this.getTables().pipe(takeUntil(this.destroy$)).subscribe((tables) => this.tables$.next(tables));
     this.getCategories().pipe(takeUntil(this.destroy$)).subscribe((categories) => this.categories$.next(categories));
     this.getMenuItems().pipe(takeUntil(this.destroy$)).subscribe((menuItems) => this.menuItems$.next(menuItems));
