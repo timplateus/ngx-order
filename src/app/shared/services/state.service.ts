@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable, of, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, take, takeUntil} from 'rxjs/operators';
 import {mapToCategories, mapToMenuItems, mapToTables} from '../maps';
 import {Category, MenuItem, SummaryItem, Table} from '../models';
 import {AppConfigService} from './app-config.service';
@@ -24,9 +24,17 @@ export class StateService implements OnDestroy {
   private destroy$: Subject<void> = new Subject();
 
   constructor(private http: HttpClient, private config: AppConfigService) {
-    this.getTables().pipe(takeUntil(this.destroy$)).subscribe((tables) => this.tables$.next(tables));
-    this.getCategories().pipe(takeUntil(this.destroy$)).subscribe((categories) => this.categories$.next(categories));
-    this.getMenuItems().pipe(takeUntil(this.destroy$)).subscribe((menuItems) => this.menuItems$.next(menuItems));
+    this.init();
+  }
+
+  public init(): void {
+    this.getTables().pipe(take(1)).subscribe((tables) => this.tables$.next(tables));
+    this.getCategories().pipe(take(1)).subscribe((categories) => this.categories$.next(categories));
+    this.getMenuItems().pipe(take(1)).subscribe((menuItems) => this.menuItems$.next(menuItems));
+  }
+
+  public fetchTables(): void {
+    this.getTables().pipe(take(1)).subscribe((tables) => this.tables$.next(tables));
   }
 
   public addAccount(tableId: number, name: string): void {

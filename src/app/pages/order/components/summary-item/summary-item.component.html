@@ -11,7 +11,6 @@
 <ng-template #edit>
   <div class="summary__line">
     <span class="summary__title">{{ title }}</span>
-    <!--<img src="assets/img/trash.svg" alt="icon-delete" (click)="deleteClicked($event)">-->
     <mat-icon svgIcon="trash" aria-hidden="false" aria-label="Delete" (click)="deleteClicked($event)"></mat-icon>
   </div>
   <div class="summary__line">
@@ -20,7 +19,7 @@
   <div class="summary__line">
     <mat-form-field appearance="outline" style="flex: 1">
       <mat-label>Opmerkingen</mat-label>
-      <input (click)="stopPropagate($event)" matInput [value]="remarks" (change)="remarks = $event.target.value">
+      <input (click)="stopPropagate($event)" matInput [value]="remarks" (change)="remarkChanged($event)">
       <button mat-button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="clearRemarks($event)">
         <mat-icon>close</mat-icon>
       </button>

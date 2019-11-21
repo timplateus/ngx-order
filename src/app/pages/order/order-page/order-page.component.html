@@ -19,12 +19,13 @@
         [id]="item.id"
         [title]="item.title"
         [amount]="item.amount"
+        [menuItemId]="item.menuItemId"
         [remarks]="item.remarks"
         [editMode]="editId === item.id"
-        (leave)="onLeave($event)"
+        (changed)="onRemarksChanged($event)"
         (click)="toggleEditMode(item.id)" (delete)="onDelete(item.id)">
       </oc-summary-item>
     </div>
-      <button class="submit-order" mat-raised-button color="accent" (click)="submitOrder()">Plaats bestelling</button>
+      <button [disabled]="!buttonActive" class="submit-order" mat-raised-button color="accent" (click)="submitOrder()">Plaats bestelling</button>
   </aside>
 </div>
