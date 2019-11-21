@@ -20,9 +20,10 @@ export class OverviewPageComponent {
 
   openAddDialog(currentTable: Table) {
     const dialogRef = this.dialog.open(AddAccountComponent, {
-      width: '250px'
+      width: '250px',
+      autoFocus: true
     });
-    dialogRef.afterClosed().subscribe((result: string) => this.addAccountToTable(result, currentTable));
+    dialogRef.afterClosed().subscribe((result: string) => result && this.addAccountToTable(result, currentTable));
   }
 
   goToOrder(accountId: number, accountName: string) {
