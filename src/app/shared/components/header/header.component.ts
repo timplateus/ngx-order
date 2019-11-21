@@ -18,4 +18,9 @@ export class HeaderComponent {
     this.router.navigate(['/']).then(() => this.state.employee$.next(''));
   }
 
+  goToOverviewPage() {
+    // this.state.fetchTables();
+    this.router.navigate(['./overview']);
+  }
+
 }

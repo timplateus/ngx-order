@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {map} from 'rxjs/operators';
+import {debounce, debounceTime, map} from 'rxjs/operators';
 import {SummaryItem} from '../../../shared/models';
 import {StateService} from '../../../shared/services/state.service';
 
@@ -18,6 +18,8 @@ export class OrderPageComponent implements OnDestroy {
   public categories$ = this.state.categoriesWithItems$;
   public accountName$ = this.route.queryParams.pipe(map((params) => params.name));
 
+  public buttonActive = false;
+
   constructor(private state: StateService, private router: Router, private route: ActivatedRoute) {}
 
   onDelete(id: number) {
@@ -28,11 +30,15 @@ export class OrderPageComponent implements OnDestroy {
     console.debug(this.summaryItems);
   }
 
-  onLeave(item: SummaryItem) {
-    // this.summaryItems = this.summaryItems.reduce((acc, it) => it.id === item.id ? [...acc, it] : acc, []);
+  onRemarksChanged(item: SummaryItem) {
+    console.debug(`remarks changed`);
+    console.debug(item);
+    console.debug(this.summaryItems);
+    this.summaryItems = this.summaryItems.map((summaryItem) => summaryItem.id === item.id ? item : summaryItem);
   }
 
   addSummaryItem(menuItemId: number, name: string) {
+    this.buttonActive = true;
     const latestId = this.summaryItems.reduce((id, item) => item && item.id > id ? item.id : id , 0);
     const idx = this.summaryItems.findIndex((item) => item.title === name);
     if (idx > -1) {
@@ -53,9 +59,11 @@ export class OrderPageComponent implements OnDestroy {
   }
 
   submitOrder() {
-    this.state.submitOrder(this.summaryItems, this.accountId).subscribe(
-      () => this.router.navigate(['/overview']),
-      (error) => alert(error.message)
+    this.buttonActive = false;
+    this.state.submitOrder(this.summaryItems, this.accountId)
+    .subscribe(
+      () => {this.buttonActive = true; this.router.navigate(['/overview']); },
+      (error) => {alert(error.message); this.buttonActive = true; }
     );
   }
 }
