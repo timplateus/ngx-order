@@ -41,6 +41,8 @@
 }
 .summary-list {
   width: 100%;
+  max-height: 75vh;
+  overflow-y: scroll;
 }
 .summary {
   background-color: #fff;
