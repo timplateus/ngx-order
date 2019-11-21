@@ -19,7 +19,7 @@
   <div class="summary__line">
     <mat-form-field appearance="outline" style="flex: 1">
       <mat-label>Opmerkingen</mat-label>
-      <input (click)="stopPropagate($event)" matInput [value]="remarks" (change)="remarks = $event.target.value">
+      <input (click)="stopPropagate($event)" matInput [value]="remarks" (change)="remarkChanged($event)">
       <button mat-button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="clearRemarks($event)">
         <mat-icon>close</mat-icon>
       </button>
