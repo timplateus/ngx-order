@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Account toevoegen</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Naam" [(ngModel)]="accountName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuleer</button>
+  <button mat-button [mat-dialog-close]="accountName" cdkFocusInitial>Toevoegen</button>
+</div>

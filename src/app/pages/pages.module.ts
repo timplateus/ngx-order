@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import {SharedModule} from '../shared/shared.module';
+import {OrderModule} from './order/order.module';
+import {OverviewModule} from './overview/overview.module';
 import {RegistrationModule} from './registration/registration.module';
 
 
@@ -8,7 +11,10 @@ import {RegistrationModule} from './registration/registration.module';
   declarations: [],
   imports: [
     CommonModule,
-    RegistrationModule
+    OverviewModule,
+    OrderModule,
+    RegistrationModule,
+    SharedModule
   ]
 })
 export class PagesModule { }

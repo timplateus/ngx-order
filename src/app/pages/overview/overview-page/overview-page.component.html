@@ -1,0 +1,28 @@
+<oc-header [title]="'Overview'"></oc-header>
+  <div class="overview-content">
+    <div class="tables-list">
+      <div class="tables-row" *ngFor="let tableRow of (tables$ | async)">
+        <mat-card class="table" *ngFor="let table of tableRow">
+          <mat-card-header>
+            <mat-card-title>{{ table.name }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <mat-divider></mat-divider>
+            <button mat-raised-button
+                    color="primary"
+                    *ngFor="let account of table.accounts"
+                    class="account-btn"
+                    (click)="goToOrder(account.id, account.name)">
+              {{ account.name }}
+            </button>
+          </mat-card-content>
+          <mat-card-footer>
+            <mat-divider></mat-divider>
+            <button class="add-account-btn" mat-button color="primary" (click)="openAddDialog(table)">Toevoegen</button>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,17 @@
+<div class="picker">
+  <mat-icon
+    svgIcon="lessThan"
+    class="subtract"
+    aria-hidden="false"
+    aria-label="subtract"
+    (click)="changeValue($event, -1)">
+  </mat-icon>
+  <div class="picker__value">{{ value }}</div>
+  <mat-icon
+    svgIcon="greaterThan"
+    class="add"
+    aria-hidden="false"
+    aria-label="add"
+    (click)="changeValue($event, 1)">
+  </mat-icon>
+</div>

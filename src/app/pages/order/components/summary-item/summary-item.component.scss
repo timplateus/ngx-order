@@ -1,0 +1,22 @@
+.summary {
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    font-weight: bold;
+  }
+  &__remark {
+    margin-left: 10px;
+    font-style: italic;
+  }
+  &__amount {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    background-color: #C1C8CD;
+    color: #142838;
+  }
+}

@@ -1,8 +1,12 @@
 {
   "extends": "tslint:recommended",
   "rules": {
-    "array-type": false,
-    "arrow-parens": false,
+    "array-type": [
+      true,
+      "generic"
+    ],
+    "arrow-parens": true,
+    "arrow-return-shorthand": true,
     "deprecation": {
       "severity": "warning"
     },
@@ -36,21 +40,34 @@
       true,
       {
         "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
+          "public-static-field",
+          "public-static-method",
+          "protected-static-field",
+          "protected-static-method",
+          "private-static-field",
+          "private-static-method",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-constructor",
+          "protected-constructor",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
         ]
       }
     ],
     "no-consecutive-blank-lines": false,
     "no-console": [
       true,
-      "debug",
+      "error",
       "info",
+      "log",
       "time",
       "timeEnd",
-      "trace"
+      "trace",
+      "warn"
     ],
     "no-empty": false,
     "no-inferrable-types": [
@@ -67,12 +84,32 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": true,
     "quotemark": [
       true,
       "single"
     ],
-    "trailing-comma": false,
+    "trailing-comma": true,
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "only-arrow-functions": [
+      true
+    ],
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
