@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
-import {NavigationExtras, Router} from '@angular/router';
+import {Component, OnDestroy} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import {Router} from '@angular/router';
 import {Observable, Subject, timer} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {Table} from '../../../shared/models';
 import {StateService} from '../../../shared/services/state.service';
 import {AddAccountComponent} from './components/add-account/add-account.component';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'oc-overview-page',
@@ -33,11 +33,11 @@ export class OverviewPageComponent implements OnDestroy {
     this.router.navigate(['../order', accountId], {queryParams: {name: accountName}});
   }
 
-  private addAccountToTable(name: string, table: Table): void {
-    this.state.addAccount(table.id, name);
-  }
-
   ngOnDestroy(): void {
     this.destroy$.next();
+  }
+
+  private addAccountToTable(name: string, table: Table): void {
+    this.state.addAccount(table.id, name);
   }
 }
