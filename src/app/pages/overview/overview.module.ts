@@ -10,9 +10,6 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
 
 @NgModule({
   declarations: [OverviewPageComponent, AddAccountComponent],
-  entryComponents: [
-    AddAccountComponent
-  ],
   imports: [
     CommonModule,
     FormsModule,
