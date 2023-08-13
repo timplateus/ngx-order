@@ -57,8 +57,9 @@ export class SummaryItemComponent implements OnChanges {
     this.remarks = '';
   }
 
-  remarkChanged(event: any) {
-    console.debug(`remark changed from ${this.remarks} to ${event.target.value}`);
-    this.changed.emit({id: this.id, menuItemId: this.menuItemId, remarks: event.target.value, amount: this.amount, title: this.title});
+  remarkChanged(event: Event) {
+    const value = (<HTMLInputElement>event.target).value
+    console.debug(`remark changed from ${this.remarks} to ${value}`);
+    this.changed.emit({id: this.id, menuItemId: this.menuItemId, remarks: value, amount: this.amount, title: this.title});
   }
 }

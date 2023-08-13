@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {debounce, debounceTime, map} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {SummaryItem} from '../../../shared/models';
 import {StateService} from '../../../shared/services/state.service';
 

@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable, of, Subject} from 'rxjs';
-import {map, take, takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
+import {map, take} from 'rxjs/operators';
 import {mapToCategories, mapToMenuItems, mapToTables} from '../maps';
 import {Category, MenuItem, SummaryItem, Table} from '../models';
 import {AppConfigService} from './app-config.service';
@@ -43,25 +43,25 @@ export class StateService implements OnDestroy {
       tableId,
       accountIdentifier: name
     };
-    this.http.post(url, body).pipe(
-      map((response: any) =>
+    this.http.post<{id: number}>(url, body).pipe(
+      map(({id}) =>
         this.tables$.value.map((tableRow) =>
           tableRow.map((table: Table) =>
             table.id === tableId
-              ? ({...table, accounts: [...table.accounts, {id: response.id, name}]})
+              ? ({...table, accounts: [...table.accounts, {id, name}]})
               : table
           ))))
       .subscribe((tables) => this.tables$.next(tables));
   }
 
-  public submitOrder(items: Array<SummaryItem>, accountId: number): Observable<any> {
+  public submitOrder(items: Array<SummaryItem>, accountId: number): Observable<never> {
     const url = `${this.rootUrl}/order/place`;
     const body = {
       accountId,
       orderItems: items.map((item) => ({itemId: item.menuItemId, quantity: item.amount, note: item.remarks})),
       employee: this.employee$.value
     };
-    return this.http.post(url, body);
+    return this.http.post<never>(url, body);
   }
 
   ngOnDestroy(): void {
