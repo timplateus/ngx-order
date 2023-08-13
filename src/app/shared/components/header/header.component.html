@@ -1,7 +1,18 @@
 <mat-toolbar class="header" color="primary">
-  <img src="assets/img/frog_2.svg" alt="logo" class="logo" (click)="goToOverviewPage()">
+  <img
+    src="assets/img/frog_2.svg"
+    alt="logo"
+    class="logo"
+    (click)="goToOverviewPage()"
+  />
   <span class="title fill-remaining-space">{{ title }}</span>
-  <button *ngIf="employee$ | async; else noEmployee" mat-stroked-button (click)="logout()">{{ employee$ | async }} uitloggen</button>
+  <button
+    *ngIf="employee$ | async; else noEmployee"
+    mat-stroked-button
+    (click)="logout()"
+  >
+    {{ employee$ | async }} uitloggen
+  </button>
   <ng-template #noEmployee>
     <button mat-stroked-button (click)="logout()">Uitloggen</button>
   </ng-template>

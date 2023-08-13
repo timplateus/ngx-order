@@ -1,12 +1,19 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import {DomSanitizer} from '@angular/platform-browser';
-import {SummaryItem} from '../../../../shared/models';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
+import { SummaryItem } from "../../../../shared/models";
 
 @Component({
-  selector: 'oc-summary-item',
-  templateUrl: './summary-item.component.html',
-  styleUrls: ['./summary-item.component.scss']
+  selector: "oc-summary-item",
+  templateUrl: "./summary-item.component.html",
+  styleUrls: ["./summary-item.component.scss"],
 })
 export class SummaryItemComponent implements OnChanges {
   @Input() id: number;
@@ -19,21 +26,27 @@ export class SummaryItemComponent implements OnChanges {
   @Output() delete: EventEmitter<void> = new EventEmitter();
   constructor(registry: MatIconRegistry, sanitizer: DomSanitizer) {
     registry.addSvgIcon(
-      'trash',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/trash.svg')
+      "trash",
+      sanitizer.bypassSecurityTrustResourceUrl("assets/img/trash.svg"),
     );
     registry.addSvgIcon(
-      'lessThan',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-left.svg')
+      "lessThan",
+      sanitizer.bypassSecurityTrustResourceUrl("assets/img/chevron-left.svg"),
     );
     registry.addSvgIcon(
-      'greaterThan',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-right.svg')
+      "greaterThan",
+      sanitizer.bypassSecurityTrustResourceUrl("assets/img/chevron-right.svg"),
     );
   }
 
   onValueChange(value: number) {
-    this.changed.emit({id: this.id, menuItemId: this.menuItemId, remarks: this.remarks, amount: value, title: this.title});
+    this.changed.emit({
+      id: this.id,
+      menuItemId: this.menuItemId,
+      remarks: this.remarks,
+      amount: value,
+      title: this.title,
+    });
   }
 
   deleteClicked(e: Event) {
@@ -54,12 +67,18 @@ export class SummaryItemComponent implements OnChanges {
 
   clearRemarks(e: Event) {
     e.stopPropagation();
-    this.remarks = '';
+    this.remarks = "";
   }
 
   remarkChanged(event: Event) {
-    const value = (<HTMLInputElement>event.target).value
+    const value = (<HTMLInputElement>event.target).value;
     console.debug(`remark changed from ${this.remarks} to ${value}`);
-    this.changed.emit({id: this.id, menuItemId: this.menuItemId, remarks: value, amount: this.amount, title: this.title});
+    this.changed.emit({
+      id: this.id,
+      menuItemId: this.menuItemId,
+      remarks: value,
+      amount: this.amount,
+      title: this.title,
+    });
   }
 }

@@ -2,10 +2,19 @@
 <div class="order-page">
   <main class="order-page__content">
     <mat-tab-group>
-      <mat-tab *ngFor="let category of (categories$ | async)" [label]="category.name">
+      <mat-tab
+        *ngFor="let category of categories$ | async"
+        [label]="category.name"
+      >
         <div class="order-items">
           <div *ngFor="let menuItem of category.menuItems" class="order-item">
-            <button mat-raised-button color="primary" (click)="addSummaryItem(menuItem.id, menuItem.name)">{{ menuItem.name }}</button>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="addSummaryItem(menuItem.id, menuItem.name)"
+            >
+              {{ menuItem.name }}
+            </button>
           </div>
         </div>
       </mat-tab>
@@ -23,9 +32,19 @@
         [remarks]="item.remarks"
         [editMode]="editId === item.id"
         (changed)="onRemarksChanged($event)"
-        (click)="toggleEditMode(item.id)" (delete)="onDelete(item.id)">
+        (click)="toggleEditMode(item.id)"
+        (delete)="onDelete(item.id)"
+      >
       </oc-summary-item>
     </div>
-      <button [disabled]="!buttonActive" class="submit-order" mat-raised-button color="accent" (click)="submitOrder()">Plaats bestelling</button>
+    <button
+      [disabled]="!buttonActive"
+      class="submit-order"
+      mat-raised-button
+      color="accent"
+      (click)="submitOrder()"
+    >
+      Plaats bestelling
+    </button>
   </aside>
 </div>

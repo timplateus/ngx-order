@@ -29,4 +29,3 @@ export interface SummaryItem {
   amount: number;
   remarks: string;
 }
-
