@@ -1,4 +1,5 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 :host {
   width: 100%;
@@ -17,12 +18,15 @@
   &__value {
     text-align: center;
     align-self: center;
-    color: mat-color(mat-palette($mat-deep-purple));
+    color: mat.get-color-from-palette(
+      mat.define-palette(mat.$deep-purple-palette)
+    );
     font-size: xx-large;
     font-weight: bolder;
     width: 40px;
   }
 }
-.add, .subtract {
+.add,
+.subtract {
   width: 40px;
 }

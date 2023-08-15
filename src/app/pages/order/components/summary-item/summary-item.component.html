@@ -11,16 +11,34 @@
 <ng-template #edit>
   <div class="summary__line">
     <span class="summary__title">{{ title }}</span>
-    <mat-icon svgIcon="trash" aria-hidden="false" aria-label="Delete" (click)="deleteClicked($event)"></mat-icon>
+    <mat-icon
+      svgIcon="trash"
+      aria-hidden="false"
+      aria-label="Delete"
+      (click)="deleteClicked($event)"
+    ></mat-icon>
   </div>
   <div class="summary__line">
-   <oc-number-picker [value]="amount" (changed)="onValueChange($event)"></oc-number-picker>
+    <oc-number-picker
+      [value]="amount"
+      (changed)="onValueChange($event)"
+    ></oc-number-picker>
   </div>
   <div class="summary__line">
-    <mat-form-field appearance="outline" style="flex: 1">
-      <mat-label>Opmerkingen</mat-label>
-      <input (click)="stopPropagate($event)" matInput [value]="remarks" (change)="remarkChanged($event)">
-      <button mat-button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="clearRemarks($event)">
+    <mat-form-field
+      appearance="outline"
+      (click)="stopPropagate($event)"
+      style="flex: 1"
+    >
+      <mat-label>Opmerkingenff</mat-label>
+      <input matInput [value]="remarks" (change)="remarkChanged($event)" />
+      <button
+        *ngIf="remarks"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="clearRemarks($event)"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
