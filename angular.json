@@ -80,6 +80,14 @@
                 }
               ]
             },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
+            },
             "development": {}
           },
           "defaultConfiguration": "production"
@@ -93,6 +101,9 @@
             },
             "development": {
               "browserTarget": "ngx-order:build:development"
+            },
+            "local": {
+              "browserTarget": "ngx-order:build:local"
             }
           },
           "defaultConfiguration": "development"
