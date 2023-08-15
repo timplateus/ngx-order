@@ -1,10 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { mapToCategories, mapToMenuItems, mapToTables } from '../maps';
 import { Category, MenuItem, SummaryItem, Table } from '../models';
 import { AppConfigService } from './app-config.service';
+import { environment } from '../../../environments/environment';
+import { mockMenuItems } from '../mocks/menu-items.mock';
+import { mockCategories } from '../mocks/categories.mock';
+import { mockTables } from '../mocks/tables.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -106,16 +110,25 @@ export class StateService implements OnDestroy {
   }
 
   private getMenuItems(): Observable<Array<MenuItem>> {
+    if (!environment.production) {
+      return of(mockMenuItems);
+    }
     const url = `${this.rootUrl}/item/all`;
     return this.http.get(url).pipe(map(mapToMenuItems));
   }
 
   private getTables(): Observable<Array<Array<Table>>> {
+    if (!environment.production) {
+      return of(mockTables);
+    }
     const url = `${this.rootUrl}/tables/withAccountsAndRow`;
     return this.http.get(url).pipe(map(mapToTables));
   }
 
   private getCategories(): Observable<Array<Category>> {
+    if (!environment.production) {
+      return of(mockCategories);
+    }
     const url = `${this.rootUrl}/category/all`;
     return this.http.get(url).pipe(map(mapToCategories));
   }
