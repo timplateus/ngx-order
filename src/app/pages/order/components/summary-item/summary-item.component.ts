@@ -1,12 +1,19 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {MatIconRegistry} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
-import {SummaryItem} from '../../../../shared/models';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SummaryItem } from '../../../../shared/models';
 
 @Component({
   selector: 'oc-summary-item',
   templateUrl: './summary-item.component.html',
-  styleUrls: ['./summary-item.component.scss']
+  styleUrls: ['./summary-item.component.scss'],
 })
 export class SummaryItemComponent implements OnChanges {
   @Input() id: number;
@@ -20,20 +27,26 @@ export class SummaryItemComponent implements OnChanges {
   constructor(registry: MatIconRegistry, sanitizer: DomSanitizer) {
     registry.addSvgIcon(
       'trash',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/trash.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/trash.svg'),
     );
     registry.addSvgIcon(
       'lessThan',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-left.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-left.svg'),
     );
     registry.addSvgIcon(
       'greaterThan',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-right.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-right.svg'),
     );
   }
 
   onValueChange(value: number) {
-    this.changed.emit({id: this.id, menuItemId: this.menuItemId, remarks: this.remarks, amount: value, title: this.title});
+    this.changed.emit({
+      id: this.id,
+      menuItemId: this.menuItemId,
+      remarks: this.remarks,
+      amount: value,
+      title: this.title,
+    });
   }
 
   deleteClicked(e: Event) {
@@ -57,8 +70,15 @@ export class SummaryItemComponent implements OnChanges {
     this.remarks = '';
   }
 
-  remarkChanged(event: any) {
-    console.debug(`remark changed from ${this.remarks} to ${event.target.value}`);
-    this.changed.emit({id: this.id, menuItemId: this.menuItemId, remarks: event.target.value, amount: this.amount, title: this.title});
+  remarkChanged(event: Event) {
+    const value = (<HTMLInputElement>event.target).value;
+    console.debug(`remark changed from ${this.remarks} to ${value}`);
+    this.changed.emit({
+      id: this.id,
+      menuItemId: this.menuItemId,
+      remarks: value,
+      amount: this.amount,
+      title: this.title,
+    });
   }
 }

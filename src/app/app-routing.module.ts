@@ -1,35 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {OrderPageComponent} from './pages/order/order-page/order-page.component';
-import {OverviewPageComponent} from './pages/overview/overview-page/overview-page.component';
-import {RegistrationPageComponent} from './pages/registration/registration-page/registration-page.component';
+import { OrderPageComponent } from './pages/order/order-page/order-page.component';
+import { OverviewPageComponent } from './pages/overview/overview-page/overview-page.component';
+import { RegistrationPageComponent } from './pages/registration/registration-page/registration-page.component';
 
 const routes: Routes = [
   {
     pathMatch: 'full',
     path: '',
-    redirectTo: 'register'
+    redirectTo: 'register',
   },
   {
     path: 'register',
-    component: RegistrationPageComponent
+    component: RegistrationPageComponent,
   },
   {
     path: 'overview',
-    component: OverviewPageComponent
+    component: OverviewPageComponent,
   },
   {
     path: 'order',
-    component: OrderPageComponent
+    component: OrderPageComponent,
   },
   {
     path: 'order/:id',
-    component: OrderPageComponent
-  }
+    component: OrderPageComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {})],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

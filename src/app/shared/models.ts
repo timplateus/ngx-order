@@ -12,7 +12,7 @@ export interface Table {
 export interface MenuItem {
   id: number;
   name: string;
-  price: any;
+  price: number;
   categoryId: number;
 }
 
@@ -29,4 +29,3 @@ export interface SummaryItem {
   amount: number;
   remarks: string;
 }
-
