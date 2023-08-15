@@ -21,6 +21,12 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@fontsource/material-icons": "^5.0.7",
+    "@fontsource/material-icons-outlined": "^5.0.7",
+    "@fontsource/material-icons-round": "^5.0.7",
+    "@fontsource/material-icons-sharp": "^5.0.7",
+    "@fontsource/material-icons-two-tone": "^5.0.7",
+    "@fontsource/roboto": "^5.0.8",
     "rxjs": "~6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.13.1"
