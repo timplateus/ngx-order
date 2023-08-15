@@ -1,13 +1,13 @@
-import { Component, OnDestroy } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { map } from "rxjs/operators";
-import { SummaryItem } from "../../../shared/models";
-import { StateService } from "../../../shared/services/state.service";
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { SummaryItem } from '../../../shared/models';
+import { StateService } from '../../../shared/services/state.service';
 
 @Component({
-  selector: "oc-order-page",
-  templateUrl: "./order-page.component.html",
-  styleUrls: ["./order-page.component.scss"],
+  selector: 'oc-order-page',
+  templateUrl: './order-page.component.html',
+  styleUrls: ['./order-page.component.scss'],
 })
 export class OrderPageComponent implements OnDestroy {
   public editId: number;
@@ -59,7 +59,7 @@ export class OrderPageComponent implements OnDestroy {
         menuItemId,
         title: name,
         amount: 1,
-        remarks: "",
+        remarks: '',
       });
     }
   }
@@ -73,7 +73,7 @@ export class OrderPageComponent implements OnDestroy {
     this.state.submitOrder(this.summaryItems, this.accountId).subscribe(
       () => {
         this.buttonActive = true;
-        this.router.navigate(["/overview"]);
+        this.router.navigate(['/overview']);
       },
       (error) => {
         alert(error.message);

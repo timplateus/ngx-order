@@ -4,8 +4,8 @@ import {
   ApiMenuItem,
   ApiTable,
   ApiTables,
-} from "./api-models";
-import { Category, MenuItem, Table } from "./models";
+} from './api-models';
+import { Category, MenuItem, Table } from './models';
 
 export const mapToTables = (response: ApiTables): Array<Array<Table>> =>
   response.rowsWithAccounts

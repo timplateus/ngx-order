@@ -1,16 +1,16 @@
-import { Component, OnDestroy } from "@angular/core";
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
-import { Router } from "@angular/router";
-import { Observable, Subject, timer } from "rxjs";
-import { takeUntil } from "rxjs/operators";
-import { Table } from "../../../shared/models";
-import { StateService } from "../../../shared/services/state.service";
-import { AddAccountComponent } from "./components/add-account/add-account.component";
+import { Component, OnDestroy } from '@angular/core';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { Router } from '@angular/router';
+import { Observable, Subject, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Table } from '../../../shared/models';
+import { StateService } from '../../../shared/services/state.service';
+import { AddAccountComponent } from './components/add-account/add-account.component';
 
 @Component({
-  selector: "oc-overview-page",
-  styleUrls: ["./overview-page.component.scss"],
-  templateUrl: "./overview-page.component.html",
+  selector: 'oc-overview-page',
+  styleUrls: ['./overview-page.component.scss'],
+  templateUrl: './overview-page.component.html',
 })
 export class OverviewPageComponent implements OnDestroy {
   public tables$: Observable<Array<Array<Table>>> = this.state.tables$;
@@ -28,7 +28,7 @@ export class OverviewPageComponent implements OnDestroy {
 
   openAddDialog(currentTable: Table) {
     const dialogRef = this.dialog.open(AddAccountComponent, {
-      width: "250px",
+      width: '250px',
       autoFocus: true,
     });
     dialogRef
@@ -40,7 +40,7 @@ export class OverviewPageComponent implements OnDestroy {
   }
 
   goToOrder(accountId: number, accountName: string) {
-    this.router.navigate(["../order", accountId], {
+    this.router.navigate(['../order', accountId], {
       queryParams: { name: accountName },
     });
   }

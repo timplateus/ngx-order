@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { StateService } from "../../../shared/services/state.service";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { StateService } from '../../../shared/services/state.service';
 
 @Component({
-  selector: "oc-registration-page",
-  templateUrl: "./registration-page.component.html",
-  styleUrls: ["./registration-page.component.scss"],
+  selector: 'oc-registration-page',
+  templateUrl: './registration-page.component.html',
+  styleUrls: ['./registration-page.component.scss'],
 })
 export class RegistrationPageComponent {
   public name: string;
@@ -17,6 +17,6 @@ export class RegistrationPageComponent {
 
   submitName(name: string) {
     this.state.employee$.next(name);
-    this.router.navigate(["../overview"]);
+    this.router.navigate(['../overview']);
   }
 }

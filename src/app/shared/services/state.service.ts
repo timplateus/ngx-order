@@ -1,13 +1,13 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable, OnDestroy } from "@angular/core";
-import { BehaviorSubject, combineLatest, Observable, Subject } from "rxjs";
-import { map, take } from "rxjs/operators";
-import { mapToCategories, mapToMenuItems, mapToTables } from "../maps";
-import { Category, MenuItem, SummaryItem, Table } from "../models";
-import { AppConfigService } from "./app-config.service";
+import { HttpClient } from '@angular/common/http';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { mapToCategories, mapToMenuItems, mapToTables } from '../maps';
+import { Category, MenuItem, SummaryItem, Table } from '../models';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class StateService implements OnDestroy {
   public tables$: BehaviorSubject<Array<Array<Table>>> = new BehaviorSubject(
@@ -17,7 +17,7 @@ export class StateService implements OnDestroy {
     [],
   );
   public menuItems$: BehaviorSubject<Array<MenuItem>> = new BehaviorSubject([]);
-  public employee$: BehaviorSubject<string> = new BehaviorSubject("");
+  public employee$: BehaviorSubject<string> = new BehaviorSubject('');
 
   public categoriesWithItems$ = combineLatest(
     this.categories$,
