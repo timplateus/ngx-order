@@ -63,6 +63,10 @@
     "protractor": "~7.0.0",
     "typescript": "~4.9.5"
   },
+  "engines": {
+    "node": "^16.14.0 || ^18.10.0",
+    "yarn": "^1.22.19"
+  },
   "prettier": {
     "trailingComma": "all",
     "tabWidth": 2,

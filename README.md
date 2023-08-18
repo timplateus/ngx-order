@@ -1,6 +1,13 @@
 # Hermes FE (formerly known as `ngx-order`  )
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+
+## Getting started
+
+- Install Node.js. To check which version you need, check the package.json > engines section (or visit https://angular.io/guide/versions).
+- Install yarn by running `npm i -g yarn`.
+- Run `yarn install`.
+
 
 ## Development server
 
