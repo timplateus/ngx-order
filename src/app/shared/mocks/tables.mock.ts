@@ -1,19 +1,20 @@
-import { Table } from '../models';
-import { mockAccounts } from './accounts.mock';
+import { ApiTables } from '../api-models';
 
-export const mockTables: Table[][] = [
-  [
-    {
-      id: 1,
-      name: 'table1',
-      accounts: mockAccounts.filter((acc) => acc.id <= 2),
-    },
-  ],
-  [
-    {
-      id: 2,
-      name: 'table2',
-      accounts: mockAccounts.filter((acc) => acc.id > 2),
-    },
-  ],
-];
+export const mockApiTables: ApiTables = {
+  rowsWithAccounts: {
+    1: [
+      {
+        id: 1,
+        name: 'table1',
+        accounts: [{ tableId: 1, name: 'Plateus' }],
+      },
+    ],
+    2: [
+      {
+        id: 2,
+        name: 'Table 2',
+        accounts: [{ tableId: 2, name: 'De Coninck' }],
+      },
+    ],
+  },
+};
