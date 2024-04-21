@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrderPageComponent } from './pages/order/order-page/order-page.component';
 import { OverviewPageComponent } from './pages/overview/overview-page/overview-page.component';
 import { RegistrationPageComponent } from './pages/registration/registration-page/registration-page.component';
+import { loginGuard } from './shared/guard/login.guard';
 
 const routes: Routes = [
   {
@@ -16,14 +17,17 @@ const routes: Routes = [
   },
   {
     path: 'overview',
+    canActivate: [loginGuard],
     component: OverviewPageComponent,
   },
   {
     path: 'order',
+    canActivate: [loginGuard],
     component: OrderPageComponent,
   },
   {
     path: 'order/:id',
+    canActivate: [loginGuard],
     component: OrderPageComponent,
   },
 ];

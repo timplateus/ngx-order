@@ -17,11 +17,12 @@ export class HeaderComponent {
   ) {}
 
   logout() {
-    this.router.navigate(['/']).then(() => this.state.employee$.next(''));
+    this.state.setEmployee('');
+    void this.router.navigate(['/register']);
   }
 
   goToOverviewPage() {
     // this.state.fetchTables();
-    this.router.navigate(['./overview']);
+    void this.router.navigate(['./overview']);
   }
 }

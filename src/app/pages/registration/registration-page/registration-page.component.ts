@@ -16,7 +16,7 @@ export class RegistrationPageComponent {
   ) {}
 
   submitName(name: string) {
-    this.state.employee$.next(name);
+    this.state.setEmployee(name);
     this.router.navigate(['../overview']);
   }
 }

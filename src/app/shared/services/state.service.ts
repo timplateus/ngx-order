@@ -60,6 +60,11 @@ export class StateService implements OnDestroy {
       .subscribe((menuItems) => this.menuItems$.next(menuItems));
   }
 
+  public setEmployee(employee: string) {
+    sessionStorage.setItem('waiterName', employee);
+    this.employee$.next(employee);
+  }
+
   public fetchTables(): void {
     this.getTables()
       .pipe(take(1))
