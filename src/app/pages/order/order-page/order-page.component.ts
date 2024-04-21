@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { SummaryItem } from '../../../shared/models';
 import { StateService } from '../../../shared/services/state.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { LatestOrderComponent } from '../components/latest-order/latest-order.component';
 
 @Component({
   selector: 'oc-order-page',
@@ -25,7 +29,19 @@ export class OrderPageComponent implements OnDestroy {
     private state: StateService,
     private router: Router,
     private route: ActivatedRoute,
-  ) {}
+    private dialog: MatDialog,
+    registry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+  ) {
+    registry.addSvgIcon(
+      'receipt',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/receipt.svg'),
+    );
+  }
+
+  hasLatestOrder(): boolean {
+    return this.state.hasLatestOrder(this.accountId);
+  }
 
   onDelete(id: number) {
     this.summaryItems = this.summaryItems.filter((item) => item.id !== id);
@@ -73,12 +89,20 @@ export class OrderPageComponent implements OnDestroy {
     this.state.submitOrder(this.summaryItems, this.accountId).subscribe(
       () => {
         this.buttonActive = true;
-        this.router.navigate(['/overview']);
+        void this.router.navigate(['/overview']);
       },
       (error) => {
         alert(error.message);
         this.buttonActive = true;
       },
     );
+  }
+
+  openLatestOrderDialog() {
+    this.dialog.open(LatestOrderComponent, {
+      autoFocus: true,
+      minWidth: '350px',
+      data: { accountId: this.accountId },
+    });
   }
 }

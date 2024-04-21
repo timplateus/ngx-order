@@ -5,7 +5,9 @@
     class="logo"
     (click)="goToOverviewPage()"
   />
-  <span class="title fill-remaining-space">{{ title }}</span>
+  <span class="title">{{ title }}</span>
+  <ng-content select="[ocActions]"></ng-content>
+  <span class="fill-remaining-space"></span>
   <button
     *ngIf="employee$ | async; else noEmployee"
     mat-stroked-button

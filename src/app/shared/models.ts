@@ -29,3 +29,8 @@ export interface SummaryItem {
   amount: number;
   remarks: string;
 }
+
+export interface Order {
+  accountId: number;
+  items: SummaryItem[];
+}

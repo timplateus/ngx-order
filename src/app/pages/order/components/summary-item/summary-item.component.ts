@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  HostBinding,
   Input,
   OnChanges,
   Output,
@@ -24,6 +25,8 @@ export class SummaryItemComponent implements OnChanges {
   @Input() editMode = false;
   @Output() changed: EventEmitter<SummaryItem> = new EventEmitter();
   @Output() delete: EventEmitter<void> = new EventEmitter();
+
+  @HostBinding('class.summary') summaryClass = true;
   constructor(registry: MatIconRegistry, sanitizer: DomSanitizer) {
     registry.addSvgIcon(
       'trash',

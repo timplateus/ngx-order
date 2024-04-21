@@ -8,9 +8,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '../../shared/shared.module';
 import { SummaryItemComponent } from './components/summary-item/summary-item.component';
 import { OrderPageComponent } from './order-page/order-page.component';
+import { LatestOrderComponent } from './components/latest-order/latest-order.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [OrderPageComponent, SummaryItemComponent],
+  declarations: [
+    OrderPageComponent,
+    SummaryItemComponent,
+    LatestOrderComponent,
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -19,6 +25,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
     MatListModule,
     MatTabsModule,
     SharedModule,
+    MatDialogModule,
   ],
 })
 export class OrderModule {}

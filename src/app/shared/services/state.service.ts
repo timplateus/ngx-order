@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { mapToCategories, mapToMenuItems, mapToTables } from '../maps';
-import { Category, MenuItem, SummaryItem, Table } from '../models';
+import { Category, MenuItem, Order, SummaryItem, Table } from '../models';
 import { AppConfigService } from './app-config.service';
 
 @Injectable({
@@ -18,6 +18,11 @@ export class StateService implements OnDestroy {
   );
   public menuItems$: BehaviorSubject<Array<MenuItem>> = new BehaviorSubject([]);
   public employee$: BehaviorSubject<string> = new BehaviorSubject('');
+
+  private _latestOrderMap: Map<number, Order> = new Map<number, Order>();
+
+  public latestOrder$: BehaviorSubject<SummaryItem[] | null> =
+    new BehaviorSubject(null);
 
   public categoriesWithItems$ = combineLatest(
     this.categories$,
@@ -103,7 +108,23 @@ export class StateService implements OnDestroy {
       })),
       employee: this.employee$.value,
     };
-    return this.http.post<never>(url, body);
+    return this.http
+      .post<never>(url, body)
+      .pipe(
+        tap(() => this._latestOrderMap.set(accountId, { accountId, items })),
+      );
+  }
+
+  hasLatestOrder(accountId: number): boolean {
+    return this._latestOrderMap.has(accountId);
+  }
+
+  getLatestOrder(accountId: number): Order {
+    if (!this._latestOrderMap.has(accountId)) {
+      throw new Error(`Account with id "${accountId} has no latest order!`);
+    }
+
+    return this._latestOrderMap.get(accountId);
   }
 
   ngOnDestroy(): void {

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Laatste bestelling</h2>
+
+<mat-dialog-content>
+  <div class="summary-list">
+    <oc-summary-item
+      *ngFor="let item of order.items"
+      [id]="item.id"
+      [title]="item.title"
+      [amount]="item.amount"
+      [menuItemId]="item.menuItemId"
+      [remarks]="item.remarks"
+    >
+    </oc-summary-item>
+  </div>
+</mat-dialog-content>

@@ -1,4 +1,18 @@
-<oc-header [title]="'Order: ' + (accountName$ | async)"></oc-header>
+<oc-header [title]="'Order: ' + (accountName$ | async)">
+  <button
+    *ngIf="hasLatestOrder()"
+    mat-icon-button
+    ocActions
+    (click)="openLatestOrderDialog()"
+  >
+    <mat-icon
+      class="latest-order-icon"
+      svgIcon="receipt"
+      aria-hidden="false"
+      aria-label="Show latest order"
+    ></mat-icon>
+  </button>
+</oc-header>
 <div class="order-page">
   <main class="order-page__content">
     <mat-tab-group>
@@ -24,7 +38,6 @@
     <div class="summary-list">
       <oc-summary-item
         *ngFor="let item of summaryItems"
-        class="summary"
         [id]="item.id"
         [title]="item.title"
         [amount]="item.amount"
