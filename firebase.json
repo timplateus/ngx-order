@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/ngx-order",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
