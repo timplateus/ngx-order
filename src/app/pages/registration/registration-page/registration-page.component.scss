@@ -19,3 +19,10 @@
     padding-right: 20px;
   }
 }
+
+.app-version {
+  position: fixed;
+  z-index: 1;
+  bottom: 5px;
+  right: 10px;
+}

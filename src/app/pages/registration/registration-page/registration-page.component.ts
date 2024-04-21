@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../../shared/services/state.service';
+import packageInfo from '../../../../../package.json'
 
 @Component({
   selector: 'oc-registration-page',
@@ -9,6 +10,7 @@ import { StateService } from '../../../shared/services/state.service';
 })
 export class RegistrationPageComponent {
   public name: string;
+  public appVersion = packageInfo.version;
 
   constructor(
     private state: StateService,
