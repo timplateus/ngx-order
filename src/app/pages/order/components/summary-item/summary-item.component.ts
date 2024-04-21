@@ -37,6 +37,10 @@ export class SummaryItemComponent implements OnChanges {
       'greaterThan',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/chevron-right.svg'),
     );
+    registry.addSvgIcon(
+      'close',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/close.svg'),
+    );
   }
 
   onValueChange(value: number) {

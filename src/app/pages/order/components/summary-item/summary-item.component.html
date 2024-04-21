@@ -36,10 +36,10 @@
         *ngIf="remarks"
         matSuffix
         mat-icon-button
-        aria-label="Clear"
         (click)="clearRemarks($event)"
       >
-        <mat-icon>close</mat-icon>
+        <mat-icon svgIcon="close" aria-hidden="false" aria-label="clear">
+        </mat-icon>
       </button>
     </mat-form-field>
   </div>
