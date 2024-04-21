@@ -28,7 +28,7 @@ export class OverviewPageComponent implements OnDestroy {
 
   openAddDialog(currentTable: Table) {
     const dialogRef = this.dialog.open(AddAccountComponent, {
-      width: '250px',
+      width: '260px',
       autoFocus: true,
     });
     dialogRef
