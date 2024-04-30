@@ -29,3 +29,5 @@ jobs:
       uses: borales/actions-yarn@v4
       with:
         cmd: publish-patch # will run `yarn publish-patch` command
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
