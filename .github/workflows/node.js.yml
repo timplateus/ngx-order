@@ -12,22 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
-        
-    - name: Run install
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: install # will run `yarn install` command
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
-        
-    - name: Build production bundle
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: publish-patch # will run `yarn publish-patch` command
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
+        node-version: '18'
+        cache: 'yarn'
+    - run: yarn
+    - run: yarn test
