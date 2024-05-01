@@ -11,6 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Set up git user
+      run: |
+        git config --global user.name='machineuser'
+        git config --global user.email='<>'
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
