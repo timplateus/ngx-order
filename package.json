@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:local": "ng serve --configuration local",
     "build": "ng build --configuration production",
-    "build-commit": "ng build --configuration production && git add -A && git commit -m \"build project\"",
+    "build:ci": "ng build --configuration production && git add -A && git -c user.name='machineuser' -c user.email='<>' commit -m \"build project\"",
     "patch": "npm version patch",
     "publish-patch": "yarn build-commit && yarn patch && git push",
     "test": "ng test",
