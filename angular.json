@@ -97,13 +97,13 @@
           "options": {},
           "configurations": {
             "production": {
-              "browserTarget": "ngx-order:build:production"
+              "buildTarget": "ngx-order:build:production"
             },
             "development": {
-              "browserTarget": "ngx-order:build:development"
+              "buildTarget": "ngx-order:build:development"
             },
             "local": {
-              "browserTarget": "ngx-order:build:local"
+              "buildTarget": "ngx-order:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -111,7 +111,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-order:build"
+            "buildTarget": "ngx-order:build"
           }
         },
         "test": {
