@@ -6,7 +6,7 @@
     (click)="goToOverviewPage()"
     />
     <span class="title">{{ title }}</span>
-    <ng-content select="[ocActions]"></ng-content>
+    <ng-content select="[ocActions]" />
     <span class="fill-remaining-space"></span>
     @if (employee$ | async) {
       <button
