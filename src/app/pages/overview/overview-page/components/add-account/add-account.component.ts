@@ -9,7 +9,6 @@ import { MatFormField } from '@angular/material/form-field';
     selector: 'oc-add-account',
     styleUrls: ['./add-account.component.scss'],
     templateUrl: './add-account.component.html',
-    standalone: true,
     imports: [
         MatDialogTitle,
         MatDialogContent,
@@ -19,7 +18,7 @@ import { MatFormField } from '@angular/material/form-field';
         MatDialogActions,
         MatButton,
         MatDialogClose,
-    ],
+    ]
 })
 export class AddAccountComponent {
   public accountName = '';

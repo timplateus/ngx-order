@@ -19,7 +19,6 @@ import { NumberPickerComponent } from '../../../../shared/components/number-pick
     selector: 'oc-summary-item',
     templateUrl: './summary-item.component.html',
     styleUrls: ['./summary-item.component.scss'],
-    standalone: true,
     imports: [
         MatIcon,
         NumberPickerComponent,
@@ -28,7 +27,7 @@ import { NumberPickerComponent } from '../../../../shared/components/number-pick
         MatInput,
         MatIconButton,
         MatSuffix,
-    ],
+    ]
 })
 export class SummaryItemComponent implements OnChanges {
   @Input() id: number;

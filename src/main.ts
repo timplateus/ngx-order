@@ -1,4 +1,4 @@
-import { enableProdMode, APP_INITIALIZER, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, inject, provideAppInitializer } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
@@ -18,14 +18,12 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, AppRoutingModule),
-        {
-            provide: APP_INITIALIZER,
-            multi: true,
-            deps: [AppConfigService],
-            useFactory: (appConfigService: AppConfigService) => {
+        provideAppInitializer(() => {
+        const initializerFn = ((appConfigService: AppConfigService) => {
                 return () => appConfigService.loadAppConfig();
-            },
-        },
+            })(inject(AppConfigService));
+        return initializerFn();
+      }),
         provideHttpClient(withInterceptors(!environment.production ? [mockInterceptor] : [])),
         provideAnimations(),
         provideHttpClient(withInterceptorsFromDi()),

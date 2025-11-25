@@ -16,7 +16,6 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
     selector: 'oc-overview-page',
     styleUrls: ['./overview-page.component.scss'],
     templateUrl: './overview-page.component.html',
-    standalone: true,
     imports: [
         HeaderComponent,
         MatCard,
@@ -27,7 +26,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
         MatButton,
         MatCardFooter,
         AsyncPipe,
-    ],
+    ]
 })
 export class OverviewPageComponent implements OnDestroy {
   public tables$: Observable<Array<Array<Table>>> = this.state.tables$;

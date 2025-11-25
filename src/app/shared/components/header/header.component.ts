@@ -9,12 +9,11 @@ import { MatToolbar } from '@angular/material/toolbar';
     selector: 'oc-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    standalone: true,
     imports: [
         MatToolbar,
         MatButton,
         AsyncPipe,
-    ],
+    ]
 })
 export class HeaderComponent {
   @Input() title: string;

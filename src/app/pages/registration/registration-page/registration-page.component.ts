@@ -11,13 +11,12 @@ import { MatFormField } from '@angular/material/form-field';
     selector: 'oc-registration-page',
     templateUrl: './registration-page.component.html',
     styleUrls: ['./registration-page.component.scss'],
-    standalone: true,
     imports: [
         MatFormField,
         MatInput,
         FormsModule,
         MatButton,
-    ],
+    ]
 })
 export class RegistrationPageComponent {
   public name: string;

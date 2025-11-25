@@ -14,12 +14,11 @@ import { SummaryItemComponent } from '../summary-item/summary-item.component';
     templateUrl: './latest-order.component.html',
     styleUrls: ['./latest-order.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         MatDialogTitle,
         MatDialogContent,
         SummaryItemComponent,
-    ],
+    ]
 })
 export class LatestOrderComponent implements OnInit {
   order: Order;

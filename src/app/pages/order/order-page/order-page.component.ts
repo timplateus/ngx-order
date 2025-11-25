@@ -17,7 +17,6 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
     selector: 'oc-order-page',
     templateUrl: './order-page.component.html',
     styleUrls: ['./order-page.component.scss'],
-    standalone: true,
     imports: [
         HeaderComponent,
         MatIconButton,
@@ -27,7 +26,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
         MatButton,
         SummaryItemComponent,
         AsyncPipe,
-    ],
+    ]
 })
 export class OrderPageComponent implements OnDestroy {
   public editId: number;

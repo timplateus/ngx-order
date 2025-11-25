@@ -5,8 +5,7 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'oc-number-picker',
     templateUrl: './number-picker.component.html',
     styleUrls: ['./number-picker.component.scss'],
-    standalone: true,
-    imports: [MatIcon],
+    imports: [MatIcon]
 })
 export class NumberPickerComponent {
   @Input() value = 1;
