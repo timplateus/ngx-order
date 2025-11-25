@@ -7,14 +7,28 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatIconRegistry, MatIcon } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SummaryItem } from '../../../../shared/models';
+import { MatIconButton } from '@angular/material/button';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
+import { NumberPickerComponent } from '../../../../shared/components/number-picker/number-picker.component';
 
 @Component({
-  selector: 'oc-summary-item',
-  templateUrl: './summary-item.component.html',
-  styleUrls: ['./summary-item.component.scss'],
+    selector: 'oc-summary-item',
+    templateUrl: './summary-item.component.html',
+    styleUrls: ['./summary-item.component.scss'],
+    standalone: true,
+    imports: [
+        MatIcon,
+        NumberPickerComponent,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatIconButton,
+        MatSuffix,
+    ],
 })
 export class SummaryItemComponent implements OnChanges {
   @Input() id: number;

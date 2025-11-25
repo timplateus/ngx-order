@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'oc-number-picker',
-  templateUrl: './number-picker.component.html',
-  styleUrls: ['./number-picker.component.scss'],
+    selector: 'oc-number-picker',
+    templateUrl: './number-picker.component.html',
+    styleUrls: ['./number-picker.component.scss'],
+    standalone: true,
+    imports: [MatIcon],
 })
 export class NumberPickerComponent {
   @Input() value = 1;

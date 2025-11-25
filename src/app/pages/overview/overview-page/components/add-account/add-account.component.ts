@@ -1,10 +1,25 @@
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { MatButton } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
+import { MatFormField } from '@angular/material/form-field';
 
 @Component({
-  selector: 'oc-add-account',
-  styleUrls: ['./add-account.component.scss'],
-  templateUrl: './add-account.component.html',
+    selector: 'oc-add-account',
+    styleUrls: ['./add-account.component.scss'],
+    templateUrl: './add-account.component.html',
+    standalone: true,
+    imports: [
+        MatDialogTitle,
+        MatDialogContent,
+        MatFormField,
+        MatInput,
+        FormsModule,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class AddAccountComponent {
   public accountName = '';

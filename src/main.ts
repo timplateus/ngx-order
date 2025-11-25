@@ -1,13 +1,34 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, APP_INITIALIZER, importProvidersFrom } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+
 import { environment } from './environments/environment';
+import { AppComponent } from './app/app.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app/app-routing.module';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { mockInterceptor } from './app/shared/mocks/mock.interceptor';
+import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { AppConfigService } from './app/shared/services/app-config.service';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+        importProvidersFrom(BrowserModule, AppRoutingModule),
+        {
+            provide: APP_INITIALIZER,
+            multi: true,
+            deps: [AppConfigService],
+            useFactory: (appConfigService: AppConfigService) => {
+                return () => appConfigService.loadAppConfig();
+            },
+        },
+        provideHttpClient(withInterceptors(!environment.production ? [mockInterceptor] : [])),
+        provideAnimations(),
+        provideHttpClient(withInterceptorsFromDi()),
+    ]
+})
   .catch((err) => console.error(err));

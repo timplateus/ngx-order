@@ -1,11 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../services/state.service';
+import { AsyncPipe } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'oc-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+    selector: 'oc-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [
+        MatToolbar,
+        MatButton,
+        AsyncPipe,
+    ],
 })
 export class HeaderComponent {
   @Input() title: string;
