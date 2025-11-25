@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -21,9 +21,9 @@ import { MatFormField } from '@angular/material/form-field';
     ]
 })
 export class AddAccountComponent {
-  public accountName = '';
+  private dialogRef = inject<MatDialogRef<AddAccountComponent>>(MatDialogRef);
 
-  constructor(private dialogRef: MatDialogRef<AddAccountComponent>) {}
+  public accountName = '';
 
   onNoClick(): void {
     this.dialogRef.close();

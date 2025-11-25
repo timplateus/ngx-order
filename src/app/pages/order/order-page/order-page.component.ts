@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { SummaryItem } from '../../../shared/models';
@@ -29,6 +29,11 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
     ]
 })
 export class OrderPageComponent implements OnDestroy {
+  private state = inject(StateService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private dialog = inject(MatDialog);
+
   public editId: number;
   public summaryItems: Array<SummaryItem> = [];
   public accountId = this.route.snapshot.params.id;
@@ -40,14 +45,10 @@ export class OrderPageComponent implements OnDestroy {
 
   public buttonActive = false;
 
-  constructor(
-    private state: StateService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private dialog: MatDialog,
-    registry: MatIconRegistry,
-    sanitizer: DomSanitizer,
-  ) {
+  constructor() {
+    const registry = inject(MatIconRegistry);
+    const sanitizer = inject(DomSanitizer);
+
     registry.addSvgIcon(
       'receipt',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/receipt.svg'),

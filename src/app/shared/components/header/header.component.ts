@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../services/state.service';
 import { AsyncPipe } from '@angular/common';
@@ -16,13 +16,11 @@ import { MatToolbar } from '@angular/material/toolbar';
     ]
 })
 export class HeaderComponent {
+  private router = inject(Router);
+  private state = inject(StateService);
+
   @Input() title: string;
   public employee$ = this.state.employee$;
-
-  constructor(
-    private router: Router,
-    private state: StateService,
-  ) {}
 
   logout() {
     this.state.setEmployee('');

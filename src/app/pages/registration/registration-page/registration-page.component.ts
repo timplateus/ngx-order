@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../../shared/services/state.service';
 import packageInfo from '../../../../../package.json'
@@ -19,13 +19,11 @@ import { MatFormField } from '@angular/material/form-field';
     ]
 })
 export class RegistrationPageComponent {
+  private state = inject(StateService);
+  private router = inject(Router);
+
   public name: string;
   public appVersion = packageInfo.version;
-
-  constructor(
-    private state: StateService,
-    private router: Router,
-  ) {}
 
   submitName(name: string) {
     this.state.setEmployee(name);

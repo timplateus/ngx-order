@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable, Subject, timer } from 'rxjs';
@@ -29,14 +29,14 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
     ]
 })
 export class OverviewPageComponent implements OnDestroy {
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
+  private state = inject(StateService);
+
   public tables$: Observable<Array<Array<Table>>> = this.state.tables$;
   private destroy$: Subject<void> = new Subject();
 
-  constructor(
-    private router: Router,
-    private dialog: MatDialog,
-    private state: StateService,
-  ) {
+  constructor() {
     timer(0, 60000)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.state.fetchTables());

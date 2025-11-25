@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  HostBinding,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
 import { MatIconRegistry, MatIcon } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SummaryItem } from '../../../../shared/models';
@@ -40,7 +32,10 @@ export class SummaryItemComponent implements OnChanges {
   @Output() delete: EventEmitter<void> = new EventEmitter();
 
   @HostBinding('class.summary') summaryClass = true;
-  constructor(registry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor() {
+    const registry = inject(MatIconRegistry);
+    const sanitizer = inject(DomSanitizer);
+
     registry.addSvgIcon(
       'trash',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/trash.svg'),
