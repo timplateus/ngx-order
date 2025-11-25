@@ -1,54 +1,59 @@
 <oc-header [title]="'Order: ' + (accountName$ | async)">
-  <button
-    *ngIf="hasLatestOrder()"
-    mat-icon-button
-    ocActions
-    (click)="openLatestOrderDialog()"
-  >
-    <mat-icon
-      class="latest-order-icon"
-      svgIcon="receipt"
-      aria-hidden="false"
-      aria-label="Show latest order"
-    ></mat-icon>
-  </button>
+  @if (hasLatestOrder()) {
+    <button
+      mat-icon-button
+      ocActions
+      (click)="openLatestOrderDialog()"
+      >
+      <mat-icon
+        class="latest-order-icon"
+        svgIcon="receipt"
+        aria-hidden="false"
+        aria-label="Show latest order"
+      ></mat-icon>
+    </button>
+  }
 </oc-header>
 <div class="order-page">
   <main class="order-page__content">
     <mat-tab-group>
-      <mat-tab
-        *ngFor="let category of categories$ | async"
-        [label]="category.name"
-      >
-        <div class="order-items">
-          <div *ngFor="let menuItem of category.menuItems" class="order-item">
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="addSummaryItem(menuItem.id, menuItem.name)"
-            >
-              {{ menuItem.name }}
-            </button>
+      @for (category of categories$ | async; track category) {
+        <mat-tab
+          [label]="category.name"
+          >
+          <div class="order-items">
+            @for (menuItem of category.menuItems; track menuItem) {
+              <div class="order-item">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="addSummaryItem(menuItem.id, menuItem.name)"
+                  >
+                  {{ menuItem.name }}
+                </button>
+              </div>
+            }
           </div>
-        </div>
-      </mat-tab>
+        </mat-tab>
+      }
     </mat-tab-group>
   </main>
   <aside class="order-page__aside">
     <div class="summary-list">
-      <oc-summary-item
-        *ngFor="let item of summaryItems"
-        [id]="item.id"
-        [title]="item.title"
-        [amount]="item.amount"
-        [menuItemId]="item.menuItemId"
-        [remarks]="item.remarks"
-        [editMode]="editId === item.id"
-        (changed)="onRemarksChanged($event)"
-        (click)="toggleEditMode(item.id)"
-        (delete)="onDelete(item.id)"
-      >
-      </oc-summary-item>
+      @for (item of summaryItems; track item) {
+        <oc-summary-item
+          [id]="item.id"
+          [title]="item.title"
+          [amount]="item.amount"
+          [menuItemId]="item.menuItemId"
+          [remarks]="item.remarks"
+          [editMode]="editId === item.id"
+          (changed)="onRemarksChanged($event)"
+          (click)="toggleEditMode(item.id)"
+          (delete)="onDelete(item.id)"
+          >
+        </oc-summary-item>
+      }
     </div>
     <button
       [disabled]="!buttonActive"
@@ -56,7 +61,7 @@
       mat-raised-button
       color="accent"
       (click)="submitOrder()"
-    >
+      >
       Plaats bestelling
     </button>
   </aside>

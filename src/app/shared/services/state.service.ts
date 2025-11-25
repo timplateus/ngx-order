@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, inject } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { mapToCategories, mapToMenuItems, mapToTables } from '../maps';
@@ -10,6 +10,9 @@ import { AppConfigService } from './app-config.service';
   providedIn: 'root',
 })
 export class StateService implements OnDestroy {
+  private http = inject(HttpClient);
+  private config = inject(AppConfigService);
+
   public tables$: BehaviorSubject<Array<Array<Table>>> = new BehaviorSubject(
     [],
   );
@@ -42,10 +45,7 @@ export class StateService implements OnDestroy {
   private rootUrl = this.config.getRootUrl();
   private destroy$: Subject<void> = new Subject();
 
-  constructor(
-    private http: HttpClient,
-    private config: AppConfigService,
-  ) {
+  constructor() {
     this.init();
   }
 

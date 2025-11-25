@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@import '@angular/material/theming';
 
 :host {
   width: 100%;
@@ -18,8 +17,8 @@
   &__value {
     text-align: center;
     align-self: center;
-    color: mat.get-color-from-palette(
-      mat.define-palette(mat.$deep-purple-palette)
+    color: mat.m2-get-color-from-palette(
+      mat.m2-define-palette(mat.$m2-deep-purple-palette)
     );
     font-size: xx-large;
     font-weight: bolder;

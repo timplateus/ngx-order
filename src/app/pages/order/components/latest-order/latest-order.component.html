@@ -2,14 +2,15 @@
 
 <mat-dialog-content>
   <div class="summary-list">
-    <oc-summary-item
-      *ngFor="let item of order.items"
-      [id]="item.id"
-      [title]="item.title"
-      [amount]="item.amount"
-      [menuItemId]="item.menuItemId"
-      [remarks]="item.remarks"
-    >
-    </oc-summary-item>
+    @for (item of order.items; track item) {
+      <oc-summary-item
+        [id]="item.id"
+        [title]="item.title"
+        [amount]="item.amount"
+        [menuItemId]="item.menuItemId"
+        [remarks]="item.remarks"
+        >
+      </oc-summary-item>
+    }
   </div>
 </mat-dialog-content>

@@ -1,8 +1,4 @@
-import {
-  HttpInterceptorFn,
-  HttpResponse,
-  HttpStatusCode,
-} from '@angular/common/http';
+import { HttpInterceptorFn, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import config from '../../../assets/config.json';
 import { of } from 'rxjs';
 import { mockApiTables } from './tables.mock';

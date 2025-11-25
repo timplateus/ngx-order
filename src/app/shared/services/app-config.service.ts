@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 interface AppConfig {
   apiRootUrl: string;
@@ -9,8 +9,9 @@ interface AppConfig {
   providedIn: 'root',
 })
 export class AppConfigService {
+  private http = inject(HttpClient);
+
   private appConfig: AppConfig;
-  constructor(private http: HttpClient) {}
   loadAppConfig() {
     return this.http
       .get<AppConfig>('/assets/config.json')

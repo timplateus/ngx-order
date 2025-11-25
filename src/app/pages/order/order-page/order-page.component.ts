@@ -1,19 +1,39 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { SummaryItem } from '../../../shared/models';
 import { StateService } from '../../../shared/services/state.service';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatIconRegistry, MatIcon } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { LatestOrderComponent } from '../components/latest-order/latest-order.component';
+import { AsyncPipe } from '@angular/common';
+import { SummaryItemComponent } from '../components/summary-item/summary-item.component';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
 
 @Component({
-  selector: 'oc-order-page',
-  templateUrl: './order-page.component.html',
-  styleUrls: ['./order-page.component.scss'],
+    selector: 'oc-order-page',
+    templateUrl: './order-page.component.html',
+    styleUrls: ['./order-page.component.scss'],
+    imports: [
+        HeaderComponent,
+        MatIconButton,
+        MatIcon,
+        MatTabGroup,
+        MatTab,
+        MatButton,
+        SummaryItemComponent,
+        AsyncPipe,
+    ]
 })
 export class OrderPageComponent implements OnDestroy {
+  private state = inject(StateService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private dialog = inject(MatDialog);
+
   public editId: number;
   public summaryItems: Array<SummaryItem> = [];
   public accountId = this.route.snapshot.params.id;
@@ -25,14 +45,10 @@ export class OrderPageComponent implements OnDestroy {
 
   public buttonActive = false;
 
-  constructor(
-    private state: StateService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private dialog: MatDialog,
-    registry: MatIconRegistry,
-    sanitizer: DomSanitizer,
-  ) {
+  constructor() {
+    const registry = inject(MatIconRegistry);
+    const sanitizer = inject(DomSanitizer);
+
     registry.addSvgIcon(
       'receipt',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/receipt.svg'),
