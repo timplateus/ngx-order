@@ -1992,42 +1992,42 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/material-icons-outlined@npm:^5.0.7":
+"@fontsource/material-icons-outlined@npm:^5.2.6":
   version: 5.2.6
   resolution: "@fontsource/material-icons-outlined@npm:5.2.6"
   checksum: 10c0/43aa9dbda778d842a457a69a08c3797967212e8b56c927fcc7c7d3a2564e9c10b843983156dbf1b311e1c71ed99b13b87d21c63cb582160cd64f3e4154274aab
   languageName: node
   linkType: hard
 
-"@fontsource/material-icons-round@npm:^5.0.7":
+"@fontsource/material-icons-round@npm:^5.2.6":
   version: 5.2.6
   resolution: "@fontsource/material-icons-round@npm:5.2.6"
   checksum: 10c0/4c5d487e2f23c5cc8c343eed5b7ee192e47ab01708b2877671a3b7cc38b663b49d9326f21568bfb27ae8cb77a1444e4dfa8fedaeaaf4602ef2580bfb27d78f18
   languageName: node
   linkType: hard
 
-"@fontsource/material-icons-sharp@npm:^5.0.7":
+"@fontsource/material-icons-sharp@npm:^5.2.6":
   version: 5.2.6
   resolution: "@fontsource/material-icons-sharp@npm:5.2.6"
   checksum: 10c0/106fee8b0007f249a7d035077614db92c2be67a5fbf3926c3c65f345469517feb53c87d8b931e8ef3ff77894fcb4eaa232070795391b432c91ece133a016e1e8
   languageName: node
   linkType: hard
 
-"@fontsource/material-icons-two-tone@npm:^5.0.7":
+"@fontsource/material-icons-two-tone@npm:^5.2.6":
   version: 5.2.6
   resolution: "@fontsource/material-icons-two-tone@npm:5.2.6"
   checksum: 10c0/d36381629cf419fb0140247cb3e0797764b0a5bcfc75cc9e98ad46ef0c4a49101d3d1bc2cb69f8b5cc149dc6e3a0efe23edcf3d1057ce0cb5d27651593949e78
   languageName: node
   linkType: hard
 
-"@fontsource/material-icons@npm:^5.0.7":
+"@fontsource/material-icons@npm:^5.2.7":
   version: 5.2.7
   resolution: "@fontsource/material-icons@npm:5.2.7"
   checksum: 10c0/69e0d40951a4d3b49ee4fa520137aa7f4a27791ce25df6bcc591dcc14cc72be1613e4faf5bf33878304ed337cd7791a5cbeb47119987ccd99c4cfdde2a99ca1a
   languageName: node
   linkType: hard
 
-"@fontsource/roboto@npm:^5.0.8":
+"@fontsource/roboto@npm:^5.2.9":
   version: 5.2.9
   resolution: "@fontsource/roboto@npm:5.2.9"
   checksum: 10c0/8280ab6504ab7da105c77afc1231236be86f7cd02a708e25b6cfc2871975699a44be7a42491e59934f2a84c874a8109bb2babfbc6b1986bcad9f3ac1de3980ca
@@ -7119,12 +7119,12 @@ __metadata:
     "@angular/platform-browser": "npm:^19.2.15"
     "@angular/platform-browser-dynamic": "npm:^19.2.15"
     "@angular/router": "npm:^19.2.15"
-    "@fontsource/material-icons": "npm:^5.0.7"
-    "@fontsource/material-icons-outlined": "npm:^5.0.7"
-    "@fontsource/material-icons-round": "npm:^5.0.7"
-    "@fontsource/material-icons-sharp": "npm:^5.0.7"
-    "@fontsource/material-icons-two-tone": "npm:^5.0.7"
-    "@fontsource/roboto": "npm:^5.0.8"
+    "@fontsource/material-icons": "npm:^5.2.7"
+    "@fontsource/material-icons-outlined": "npm:^5.2.6"
+    "@fontsource/material-icons-round": "npm:^5.2.6"
+    "@fontsource/material-icons-sharp": "npm:^5.2.6"
+    "@fontsource/material-icons-two-tone": "npm:^5.2.6"
+    "@fontsource/roboto": "npm:^5.2.9"
     "@types/jasmine": "npm:~3.8.0"
     "@types/jasminewd2": "npm:~2.0.3"
     "@types/node": "npm:^12.11.1"
