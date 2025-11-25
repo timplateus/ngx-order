@@ -4,18 +4,18 @@
     alt="logo"
     class="logo"
     (click)="goToOverviewPage()"
-  />
-  <span class="title">{{ title }}</span>
-  <ng-content select="[ocActions]"></ng-content>
-  <span class="fill-remaining-space"></span>
-  <button
-    *ngIf="employee$ | async; else noEmployee"
-    mat-stroked-button
-    (click)="logout()"
-  >
-    {{ employee$ | async }} uitloggen
-  </button>
-  <ng-template #noEmployee>
-    <button mat-stroked-button (click)="logout()">Uitloggen</button>
-  </ng-template>
-</mat-toolbar>
+    />
+    <span class="title">{{ title }}</span>
+    <ng-content select="[ocActions]"></ng-content>
+    <span class="fill-remaining-space"></span>
+    @if (employee$ | async) {
+      <button
+        mat-stroked-button
+        (click)="logout()"
+        >
+        {{ employee$ | async }} uitloggen
+      </button>
+    } @else {
+      <button mat-stroked-button (click)="logout()">Uitloggen</button>
+    }
+  </mat-toolbar>
